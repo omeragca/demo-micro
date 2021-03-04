@@ -5,3 +5,12 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+
+spring:
+  data:
+    mongodb:
+      database: demo
+      username: root
+      password: root123
+      authentication-database: admin
+      auto-index-creation: true

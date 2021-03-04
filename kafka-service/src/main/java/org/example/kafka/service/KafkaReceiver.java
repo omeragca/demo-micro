@@ -17,8 +17,9 @@ public class KafkaReceiver {
     @KafkaListener(topics = "demo-micro_topic")
     public void listen(String text) {
         System.out.println("Received message in group foo: " + text);
-        Message message = restTemplate.getForObject("http://message-service/api/msg/" + text, Message.class);
-        System.out.println("Service result: " + message);
+        restTemplate.postForLocation("http://message-service/api/msg/",
+                new Message(text, text));
+        System.out.println("Sent to message service");
     }
 
     @Bean
